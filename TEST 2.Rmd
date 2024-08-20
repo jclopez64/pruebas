@@ -37,3 +37,6 @@ ggplot(resultados, aes(x = Variable)) +
        x = "Variable") +
   theme_minimal()
 
+Deshacer los 2 primeros cambios
+Volver a la 4º opción
+
