@@ -1,0 +1,39 @@
+---
+title: "TEST 2"
+output: pdf_document
+date: "2024-03-20"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Segunda aplicación:
+Para describir el ejemplo del Test 1:
+
+# Librerías necesarias
+library(ggplot2)
+
+# Voy al lío
+media <- colMeans(renewables, na.rm = TRUE)
+desviacion_estandar <- apply(renewables, 2, sd, na.rm = TRUE)
+
+# Dibujito con la brocha
+resultados <- data.frame(
+  Variable = names(media),
+  Media = media,
+  Desviacion_Estandar = desviacion_estandar
+)
+
+# Cuadro
+ggplot(resultados, aes(x = Variable)) +
+  geom_bar(aes(y = Media), stat = "identity", fill = "blue", alpha = 0.7) +
+  geom_errorbar(aes(ymin = Media - Desviacion_Estandar, ymax = Media + Desviacion_Estandar), 
+                width = 0.2, color = "red") +
+  labs(title = "Media y Desviación Estándar de Variables en 'renewables'",
+       y = "Valor",
+       x = "Variable") +
+  theme_minimal()
+
